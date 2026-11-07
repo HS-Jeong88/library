@@ -8,7 +8,7 @@ let sortType = "date";
 let searchTimer = null;
 let requestNumber = 0;
 
-function escapeHTML(value) {
+const escapeHTML = (value) => {
   return String(value ?? "").replace(
     /[&<>"']/g,
     (char) =>
@@ -20,7 +20,7 @@ function escapeHTML(value) {
         "'": "&#039;",
       })[char],
   );
-}
+};
 
 export default function Library() {
   keyword = "";
@@ -105,7 +105,7 @@ export default function Library() {
   `;
 }
 
-function renderBooks() {
+const renderBooks = () => {
   const bookList = document.querySelector("#bookList");
   const bookCount = document.querySelector("#bookCount");
 
@@ -134,9 +134,9 @@ function renderBooks() {
   }
 
   bookList.innerHTML = sortedBooks.map((book) => BookCard(book)).join("");
-}
+};
 
-async function loadBooks() {
+const loadBooks = async () => {
   const currentRequest = ++requestNumber;
   const bookList = document.querySelector("#bookList");
   if (!bookList) return;
@@ -153,9 +153,9 @@ async function loadBooks() {
       </div>
     `;
   }
-}
+};
 
-function getFormData(form) {
+const getFormData = (form) => {
   const data = new FormData(form);
   return {
     title: data.get("title").trim(),
@@ -164,21 +164,21 @@ function getFormData(form) {
     year: Number(data.get("year")),
     description: data.get("description").trim(),
   };
-}
+};
 
-function validateBook(book) {
+const validateBook = (book) => {
   if (!book.title || !book.author || !book.genre || !Number.isInteger(book.year) || book.year < 1) {
     alert("모든 필수 항목을 올바르게 입력해 주세요.");
     return false;
   }
   return true;
-}
+};
 
-function closeEditModal() {
+const closeEditModal = () => {
   document.querySelector("#editModal")?.remove();
-}
+};
 
-function openEditModal(id) {
+const openEditModal = (id) => {
   const book = books.find((item) => item.id === id);
   if (!book) return;
   closeEditModal();
@@ -206,9 +206,9 @@ function openEditModal(id) {
       alert(error.message);
     }
   });
-}
+};
 
-export function initLibrary() {
+export const initLibrary = () => {
   const addBookBtn = document.querySelector("#addBookBtn");
   const addBookForm = document.querySelector("#addBookForm");
   const cancelAddBtn = document.querySelector("#cancelAddBtn");
@@ -280,4 +280,4 @@ export function initLibrary() {
   });
 
   loadBooks();
-}
+};
