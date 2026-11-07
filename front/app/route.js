@@ -7,11 +7,11 @@ const routes = {
   "/library": Library,
 };
 
-function getPath() {
+const getPath = () => {
   return window.location.hash.slice(1) || "/";
-}
+};
 
-export function router() {
+export const router = () => {
   const app = document.querySelector("#app");
   const path = getPath();
 
@@ -36,14 +36,14 @@ export function router() {
   if (path === "/library") {
     initLibrary();
   }
-}
+};
 
 window.addEventListener("hashchange", router);
 
-export function initRouter() {
+export const initRouter = () => {
   if (!window.location.hash) {
     window.location.hash = "/";
   } else {
     router();
   }
-}
+};

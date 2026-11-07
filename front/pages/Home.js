@@ -76,7 +76,7 @@ export default function Home() {
   `;
 }
 
-export async function initHome() {
+export const initHome = async () => {
   try {
     const books = await BookAPI.getAll();
 
@@ -119,4 +119,4 @@ export async function initHome() {
       </p>
     `;
   }
-}
+};
