@@ -16,6 +16,6 @@
 - 백엔드 : Python FastAPI
 - 데이터 저장 : Python 리스트와 딕셔너리
 - 데이터 검증 : Pydantic BaseModel
-- 프론트 엔드 : HTML, CSS, JavaScript
+- 프론트 엔드 : HTML, Tailwind CSS, JavaScript
 - 서버 통신 : Fetch API
 - HTTP 메서드 : GET, POST, PUT, DELETE

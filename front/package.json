@@ -1,0 +1,7 @@
+{
+  "name": "static-tailwind-project",
+  "version": "1.0.0",
+  "devDependencies": {
+    "tailwindcss": "^3.0.0"
+  }
+}
