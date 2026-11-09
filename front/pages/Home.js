@@ -79,20 +79,13 @@ export default function Home() {
 export const initHome = async () => {
   try {
     const books = await BookAPI.getAll();
-
     document.querySelector("#totalBooks").textContent = books.length;
-
     const genres = new Set(books.map((book) => book.genre));
-
     document.querySelector("#totalGenres").textContent = genres.size;
-
     const sortedBooks = [...books].sort((a, b) => b.created_at.localeCompare(a.created_at));
-
     document.querySelector("#latestBook").textContent =
       sortedBooks.length > 0 ? sortedBooks[0].title : "등록된 도서 없음";
-
     const recentBooks = sortedBooks.slice(0, 5);
-
     const recentBooksArea = document.querySelector("#recentBooks");
 
     if (recentBooks.length === 0) {
